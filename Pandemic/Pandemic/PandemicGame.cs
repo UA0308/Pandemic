@@ -26,7 +26,8 @@ namespace Pandemic
         KeyboardState keyboardState;
         List<string> X = new List<string>();
         List<string> Y = new List<string>();
-        bool kay = false;
+
+        InfectionCard card = new InfectionCard();
         public PandemicGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -45,7 +46,6 @@ namespace Pandemic
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -59,7 +59,8 @@ namespace Pandemic
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             background = Content.Load<Texture2D>("Textures\\background");
-
+            card.Load(Content, "Textures\\BlackCube");
+            card.spritePosition = new Vector2(200, 200);
 
             // TODO: use this.Content to load your game content here
         }
@@ -81,40 +82,9 @@ namespace Pandemic
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.Escape))
-            {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"X.txt"))
-                {
-                    for (int i = 0; i < X.Count; i++)
-                    {
-                        // If the line doesn't contain the word 'Second', write the line to the file.
-                            file.WriteLine(X[i]);
-                    }
-                }
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Y.txt"))
-                {
-                    for (int i = 0; i<Y.Count; i++)
-                    {
-                        // If the line doesn't contain the word 'Second', write the line to the file.
-                        file.WriteLine(Y[i]);
-                    }
-                }
-            }
+
 
             // TODO: Add your update logic here
-             mouse = Mouse.GetState();
-            //if (mouseState.X != prevMouseState.X ||
-            //    mouseState.Y != prevMouseState.Y)
-            //  //  ringsPosition = new Vector2(mouseState.X, mouseState.Y);
-            //prevMouseState = mouseState;
-             if (mouse.RightButton == ButtonState.Pressed && kay == false)
-             {
-                 X.Add(Convert.ToString(mouse.X));
-                 Y.Add(Convert.ToString(mouse.Y));
-                 kay = true;
-             }
-             if (mouse.RightButton == ButtonState.Released) kay = false;
             base.Update(gameTime);
         }
 
@@ -129,6 +99,7 @@ namespace Pandemic
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(background, new Rectangle(0, 0, 1200, 720), Color.White);
+            card.DrawSprite(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

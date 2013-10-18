@@ -10,6 +10,15 @@
       <Output>F:\SkyDrive\Pandemic\Pandemic\Pandemic\bin\x86\Debug\Content\Textures\background.xnb</Output>
       <Time>2013-10-17T20:35:27.6752901+03:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\BlackCube.png</Source>
+      <Name>Textures\BlackCube</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\SkyDrive\Pandemic\Pandemic\Pandemic\bin\x86\Debug\Content\Textures\BlackCube.xnb</Output>
+      <Time>2013-10-18T22:36:57.5058738+03:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
